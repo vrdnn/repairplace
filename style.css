@@ -1,0 +1,179 @@
+body {
+	margin: 0;
+	font-family: 'PT Sans', sans-serif;
+	margin-left: 250px;
+	margin-right: 250px;
+}
+
+input {
+	outline: none;
+}
+
+.mainpage {
+	height: 964px;
+	/*margin-left: 250px;
+	margin-right: 250px;*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.mainform {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.logocontainer {
+	width: 340px;
+	height: 137px;
+	margin-bottom: 67px;
+}
+
+.authform {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.authform input {
+	width: 381px;
+	height: 60px;
+	background: #FFFFFF;
+	border: 1px solid #000000;
+	box-sizing: border-box;
+	border-radius: 15px;
+	margin-bottom: 40px;
+	font-size: 24px;
+	padding-left: 20px;
+}
+
+
+.authform input:focus {
+	border: 3px solid #FF7A00;
+}
+
+.authform button {
+	width: 85px;
+	height: 32px;
+	background: #FFFFFF;
+	border: 1px solid #000000;
+	box-sizing: border-box;
+	border-radius: 30px;
+}
+
+.authform button:hover {
+	background: #242424;
+	color: #FFFFFF;
+}
+
+/*----Header----*/
+.page-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.page-header img{
+	margin-top: 19px;
+}
+
+.indexmenu {
+	width: 226px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.indexmenu p {
+	font-size: 24px;
+	margin-top: 40px;
+}
+
+.indexmenu img.avatar {
+	margin-top: 28px;
+}
+
+.indexmenu img.arrownav {
+	margin-top: 42px;
+}
+
+/*----Main----*/
+.mainindex {
+	margin-top: 116px;
+}
+
+.orders p{
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.sorting {
+	margin-top: 44px;
+}
+
+.sorting button {
+	height: 41px;
+	background: #FFFFFF;
+	border: 0.7px solid #000000;
+	border-radius: 30px;
+	margin-right: 25px;
+}
+
+.sorting button:hover {
+	background: #242424;
+	color: #FFFFFF;
+	transition: 0.5s linear;
+}
+
+.sorting button:nth-child(1) {
+	width: 84px;
+}
+.sorting button:nth-child(2) {
+	width: 124px;
+}
+.sorting button:nth-child(3),
+.sorting button:nth-child(4),
+.sorting button:nth-child(5) {
+	width: 158px;
+}
+
+.sorting button:nth-child(5) {
+	float: right;
+	margin-right: 0px;
+}
+
+/*----Таблица----*/
+.table {
+	margin-top: 65px;
+}
+
+table {
+	margin: auto;
+	width: 100%;
+	height: 100%;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th,td {
+	border: 1px solid black;
+	padding: 15px;
+}
+
+td:nth-child(1) {
+	width: 148px;
+}
+td:nth-child(2) {
+	width: 161px;
+}
+td:nth-child(3) {
+	width: 346px;
+}
+td:nth-child(4) {
+	width: 252px;
+}
+td:nth-child(5) {
+	width: 200px;
+}
