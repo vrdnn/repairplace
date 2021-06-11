@@ -124,7 +124,7 @@ input {
 .sorting button:hover {
 	background: #242424;
 	color: #FFFFFF;
-	transition: 0.5s linear;
+	transition: 0.2s ease-in;
 }
 
 .sorting button:nth-child(1) {
