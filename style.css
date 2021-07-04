@@ -136,13 +136,24 @@ input {
 }
 .sorting button:nth-child(3),
 .sorting button:nth-child(4),
-.sorting button:nth-child(5) {
+.sorting button:nth-child(5),
+.sorting button:nth-child(6) {
 	width: 158px;
+}
+
+.sorting button:nth-child(4) {
+	float: right;
+	margin-right: 0px;
 }
 
 .sorting button:nth-child(5) {
 	float: right;
-	margin-right: 0px;
+	margin-right: 10px;
+}
+
+.sorting button:nth-child(6) {
+	float: right;
+	margin-right: 10px;
 }
 
 /*----Таблица----*/
