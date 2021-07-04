@@ -5,6 +5,15 @@
 	$link = mysqli_connect($host, $user, $password, $database) 
         or die("Ошибка " . mysqli_error($link));
     $query = "SELECT * FROM orders";
+    if (isset($_POST['finished'])) {
+    	   $query = "SELECT * FROM orders WHERE orderstatus = 'Завершено'";
+    }
+    elseif (isset($_POST['active'])) {
+    	$query = "SELECT * FROM orders WHERE orderstatus = 'В работе'";
+    }
+    elseif (isset($_POST['all'])) {
+    	$query = "SELECT * FROM orders";
+    }
 
     $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link));
     $rows = mysqli_num_rows($result);
@@ -43,6 +52,24 @@
         mysqli_close($link);
         header('Location: first.php');
     }
+
+    if (isset($_POST['delorder'])) {
+    	$orderid = $_POST['delorder'];
+    	$query="DELETE FROM orders WHERE id = $orderid";
+        $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
+
+        mysqli_close($link);
+        header('Location: first.php');
+    }
+
+    if (isset($_POST['endorder'])) {
+    	$endorderid = $_POST['endorder'];
+    	$query="UPDATE orders SET orderstatus='Завершено' WHERE id = $endorderid";
+        $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
+
+        mysqli_close($link);
+        header('Location: first.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -70,10 +97,11 @@
 				<p>Заказы <font color="#A9A9A9">(<?php echo $rows ?>)</font></p>
 			</section>
 			<section class="sorting">
-				<button>Все</button>
-				<button>Активные</button>
-				<button>Завершенные</button>
-				<button>Удаленные</button>
+				<button name="all" form="all" type="submit">Все</button>
+				<button name="active" form="active" type="submit">Активные</button>
+				<button name="finished" form="finished" type="submit">Завершенные</button>
+				<button id="btnend">Завершить</button>
+				<button id="btndel">Удалить</button>
 				<button id="myBtn">Добавить</button>
 				<div id="mypopup" class="popup">
 					<div class="popup-content">
@@ -93,7 +121,32 @@
 						</form>
 					</div>
 				</div>
+				<div id="delpopup" class="popup">
+					<div class="popup-content">
+						<div class="popup-header">
+							<h2>Удаление заказа</h2>
+							<span id="closedel" class="close">&times;</span>
+						</div>
+						<form class="popup-form" method = "POST" name="del">
+								<input type="text" placeholder="Введите номер заказа" name="delorder">
+							<button type="submit" name="delsub">Удалить</button>
+						</form>
+					</div>
+				</div>
+				<div id="endpopup" class="popup">
+					<div class="popup-content">
+						<div class="popup-header">
+							<h2>Завершение заказа</h2>
+							<span id="closeend" class="close">&times;</span>
+						</div>
+						<form class="popup-form" method = "POST" name="end">
+								<input type="text" placeholder="Введите номер заказа" name="endorder">
+							<button type="submit" name="endsub">Завершить</button>
+						</form>
+					</div>
+				</div>
 			</section>
+
 			<section class="table">
 				<table>
 					<tr>
@@ -140,6 +193,45 @@
 					popup.style.display="none";
 				}
 			}
+
+		let popupdel = document.getElementById('delpopup'),
+			popupdelToggle = document.getElementById('btndel'),
+			popupdelClose = document.getElementById('closedel');
+
+			popupdelToggle.onclick = function() {
+				popupdel.style.display="block";
+			};
+
+			popupdelClose.onclick = function () {
+				popupdel.style.display="none";
+			}
+
+			window.onclick = function (event) {
+				if(event.target == popupdel) {
+					popupdel.style.display="none";
+				}
+			}
+
+		let popupend = document.getElementById('endpopup'),
+			popupendToggle = document.getElementById('btnend'),
+			popupendClose = document.getElementById('closeend');
+
+			popupendToggle.onclick = function() {
+				popupend.style.display="block";
+			};
+
+			popupendClose.onclick = function () {
+				popupend.style.display="none";
+			}
+
+			window.onclick = function (event) {
+				if(event.target == popupend) {
+					popupend.style.display="none";
+				}
+			}
 	</script>
+	<form id="all" class="mainform" method="POST"></form>
+	<form id="active" class="mainform" method="POST"></form>
+	<form id="finished" class="mainform" method="POST"></form>
 </body>
 </html>
